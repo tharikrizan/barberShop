@@ -86,7 +86,7 @@ const AppointmentForm = () => {
       setPhone("");
       setDate(null);
       setNic("");
-      setService("mch1");
+      setService("mhc1");
       return;
     }
   };

@@ -11,6 +11,9 @@ const SiteContextProvider = (props) => {
   const [alertMessage, setAlertMessage] = useState(null);
   const [bookedTimeSlots, setBookedTimeSlots] = useState([]);
 
+  useEffect(() => {
+    console.log("after removing booking:", bookedTimeSlots);
+  }, []);
   const addService = () => {
     console.log("add service");
   };
@@ -83,7 +86,7 @@ const SiteContextProvider = (props) => {
       default:
         break;
     }
-  /*   console.log("booked time", bookedTime); */
+    /*   console.log("booked time", bookedTime); */
 
     //checking if two users booked concurrently
     /*     bookedTime.forEach((element1) => {
@@ -103,20 +106,28 @@ const SiteContextProvider = (props) => {
         { _id: uuid(), ...newBooking, bookedTime, currentTime: new Date() },
       ]);
     }
-   /*  console.log(bookedTimeSlots); */
+    /*  console.log(bookedTimeSlots); */
   };
 
   const removeBooking = (id) => {
-    let slotToBeRemoved = booking.filter((slot) => slot._id === id);
+    let arraySlotToBeRemoved = booking.filter((slot) => slot._id === id);
 
+    let slotToBeRemoved = arraySlotToBeRemoved[0];
+
+    console.log(slotToBeRemoved.bookedTime);
     //chcking whether the booked slot is available
     if (slotToBeRemoved) {
-      //checking whether the time is less than 15 min to be removed
+      console.log("before removing:", bookedTimeSlots);
+      setBookedTimeSlots(
+        bookedTimeSlots.filter(
+          (x) => slotToBeRemoved.bookedTime.indexOf(x) == -1
+        )
+      );
 
       setBooking(booking.filter((slot) => slot._id !== id));
     }
   };
-  console.log("contextAPI : bookedTimeslots", bookedTimeSlots);
+
   return (
     <siteContext.Provider
       value={{

@@ -6,7 +6,7 @@ import CardGroup from "react-bootstrap/CardGroup";
 import BookedSlot from "./bookedSlot";
 import { siteContext } from "../context/siteContext";
 const BookedSlotsCards = () => {
-  const { removeBooking, booking } = useContext(siteContext);
+  const {  booking } = useContext(siteContext);
 
   console.log("booking in bookedSlotCards:", booking);
   const bookedSlotComponents = booking.map((sb) => (

@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Card from "react-bootstrap/Card";
 import "./style/bookedSlotCard.css";
+import { siteContext } from "../context/siteContext";
 
 const BookedSlot = ({ bookingDetails }) => {
+  const { removeBooking } = useContext(siteContext);
+
   let sTime = bookingDetails.bookedTime[0];
   let eTime = bookingDetails.bookedTime[bookingDetails.bookedTime.length - 1];
   let endTime = new Date(eTime.getTime() + 1000 * 60 * 15);
@@ -30,7 +33,9 @@ const BookedSlot = ({ bookingDetails }) => {
             <Card.Subtitle>
               PLEASE CANCEL BOOKING WITHIN 15 MIN
               <Card.Subtitle>
-                <button>CANCEL</button>
+                <button onClick={() => removeBooking(bookingDetails._id)}>
+                  CANCEL
+                </button>
               </Card.Subtitle>
             </Card.Subtitle>
           ) : (
