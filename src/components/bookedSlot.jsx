@@ -6,6 +6,24 @@ import { siteContext } from "../context/siteContext";
 const BookedSlot = ({ bookingDetails }) => {
   const { removeBooking } = useContext(siteContext);
 
+  const [cancelButton, setCancelButton] = useState(true);
+
+  console.log(
+    "time difference,",
+    new Date().getTime() - bookingDetails.currentTime.getTime()
+  );
+  const confirmBooking = () => {
+    if (new Date().getTime() - bookingDetails.currentTime.getTime() < 1000) {
+    }
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCancelButton(false);
+    }, 1000 * 60 * 15);
+    return () => clearInterval(interval);
+  }, []);
+
   let sTime = bookingDetails.bookedTime[0];
   let eTime = bookingDetails.bookedTime[bookingDetails.bookedTime.length - 1];
   let endTime = new Date(eTime.getTime() + 1000 * 60 * 15);
@@ -28,8 +46,7 @@ const BookedSlot = ({ bookingDetails }) => {
             End Time : {endTime.getHours()} : {endTime.getMinutes()}
           </Card.Subtitle>
 
-          {new Date().getTime() - bookingDetails.currentTime.getTime() <
-          1000 ? (
+          {cancelButton ? (
             <Card.Subtitle>
               PLEASE CANCEL BOOKING WITHIN 15 MIN
               <Card.Subtitle>
