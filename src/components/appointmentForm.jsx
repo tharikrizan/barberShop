@@ -68,6 +68,7 @@ const AppointmentForm = () => {
     console.log("month", date.getMonth());
     console.log("Time", date.getHours());
     console.log("Minnutes", date.getMinutes()); */
+    /* console.log("booked time slots", bookedTimeSlots); */
     if (!validNIC) {
       // setMessage("invlaid NIC");
       setNic("");
@@ -85,7 +86,7 @@ const AppointmentForm = () => {
       setPhone("");
       setDate(null);
       setNic("");
-      setService("");
+      setService("mch1");
       return;
     }
   };

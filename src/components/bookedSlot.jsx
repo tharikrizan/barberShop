@@ -5,9 +5,11 @@ import "./style/bookedSlotCard.css";
 const BookedSlot = ({ bookingDetails }) => {
   let sTime = bookingDetails.bookedTime[0];
   let eTime = bookingDetails.bookedTime[bookingDetails.bookedTime.length - 1];
-  eTime.setMinutes(eTime.getMinutes() + 15);
+  let endTime = new Date(eTime.getTime() + 1000 * 60 * 15);
 
-  console.log(sTime.getHours(), eTime.getHours());
+  console.log(sTime.getHours(), sTime.getMinutes());
+  console.log(eTime.getHours(), eTime.getMinutes());
+  console.log("endTime:", endTime.getHours(), endTime.getMinutes());
   return (
     <div className="cardContainer">
       <Card>
@@ -20,7 +22,7 @@ const BookedSlot = ({ bookingDetails }) => {
             Start Time : {sTime.getHours()} : {sTime.getMinutes()}
           </Card.Subtitle>
           <Card.Subtitle className="mb-2 text-muted">
-            End Time : {eTime.getHours()} : {eTime.getMinutes()}
+            End Time : {endTime.getHours()} : {endTime.getMinutes()}
           </Card.Subtitle>
 
           {new Date().getTime() - bookingDetails.currentTime.getTime() <

@@ -83,10 +83,10 @@ const SiteContextProvider = (props) => {
       default:
         break;
     }
-    console.log("booked time", bookedTime);
+  /*   console.log("booked time", bookedTime); */
 
     //checking if two users booked concurrently
-/*     bookedTime.forEach((element1) => {
+    /*     bookedTime.forEach((element1) => {
       bookedTimeSlots.forEach((element2) => {
         if (element1 === element2) {
           setAlertMessage("Sorry, some customer  Booked it  Just now ☹");
@@ -97,12 +97,13 @@ const SiteContextProvider = (props) => {
     //checking whether there is no alert message before booking it
     if (!alertMessage) {
       setBookedTimeSlots([...bookedTimeSlots, ...bookedTime]);
+
       setBooking([
         ...booking,
         { _id: uuid(), ...newBooking, bookedTime, currentTime: new Date() },
       ]);
     }
-    console.log(bookedTimeSlots);
+   /*  console.log(bookedTimeSlots); */
   };
 
   const removeBooking = (id) => {
@@ -115,6 +116,7 @@ const SiteContextProvider = (props) => {
       setBooking(booking.filter((slot) => slot._id !== id));
     }
   };
+  console.log("contextAPI : bookedTimeslots", bookedTimeSlots);
   return (
     <siteContext.Provider
       value={{

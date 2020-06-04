@@ -8,6 +8,7 @@ import { siteContext } from "../context/siteContext";
 const BookedSlotsCards = () => {
   const { removeBooking, booking } = useContext(siteContext);
 
+  console.log("booking in bookedSlotCards:", booking);
   const bookedSlotComponents = booking.map((sb) => (
     <BookedSlot key={sb._id} bookingDetails={sb} />
   ));
