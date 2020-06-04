@@ -1,0 +1,36 @@
+.bookeSlotsCards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  justify-content: center;
+
+  /* align-content: flex-start; */
+}
+@media screen and (max-width: 992px) {
+  .bookeSlotsCards {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+
+    /*  justify-content: center; */
+    align-items: center;
+    align-content: stretch;
+  }
+}
+
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .bookeSlotsCards {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    /* 
+    justify-content: center; */
+    align-items: center;
+    align-content: stretch;
+  }
+}

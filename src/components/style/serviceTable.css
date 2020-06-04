@@ -1,0 +1,46 @@
+.priceTable {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.mensTable {
+  flex-grow: 1;
+  margin: 0 0 0 50px;
+}
+.femalesTable {
+  flex-grow: 1;
+  margin: 0 0 0 50px;
+}
+th,
+td {
+  color: white;
+}
+img {
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+}
+@media screen and (max-width: 992px) {
+  .priceTable {
+    display: flex;
+    width: 100%;
+
+    flex-flow: column wrap;
+    align-items: center;
+    align-content: stretch;
+  }
+}
+
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .priceTable {
+    display: flex;
+    width: 100%;
+
+    flex-flow: column wrap;
+    align-items: center;
+    align-content: stretch;
+  }
+}

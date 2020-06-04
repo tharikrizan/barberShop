@@ -1,0 +1,32 @@
+.footerContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+
+  background-image: url("../images/footerbg.jpg");
+
+  /* Add the blur effect */
+  /*  filter: blur(1px);
+  -webkit-filter: blur(1px); */
+
+  /* Full height */
+  height: 500px;
+  width: 100%;
+
+  /* Center and scale the image nicely */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.shopContact {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+.developerContact {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}

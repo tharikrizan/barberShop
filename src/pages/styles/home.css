@@ -1,0 +1,26 @@
+.parent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.appointmentForm {
+  background-attachment: fixed;
+  background-image: url("../../components/images/registerbackground.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.serviceTable {
+  background-attachment: fixed;
+  background-image: url("../../components/images/bookedSlotsTablebg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bookedSlots {
+  background-attachment: fixed;
+  background-image: url("../../components/images/bookedSlotsbg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

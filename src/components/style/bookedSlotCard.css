@@ -1,0 +1,22 @@
+.cardContainer {
+  width: 300px;
+  height: auto;
+  border: 3px solid #4caf50;
+  margin: 2px 2px 2px 2px;
+}
+@media screen and (max-width: 992px) {
+  .cardContainer {
+    width: 50%;
+    border: 3px solid #4caf50;
+    margin: 2px 2px 2px 2px;
+  }
+}
+
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .cardContainer {
+    width: 100%;
+    border: 3px solid #4caf50;
+    margin: 2px 2px 2px 2px;
+  }
+}
