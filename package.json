@@ -8,9 +8,11 @@
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.5.0",
     "concurrently": "^5.2.0",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mongoose": "^5.9.18",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-datepicker": "^2.16.0",
@@ -22,6 +24,8 @@
     "uuidv4": "^6.1.0"
   },
   "scripts": {
+    "app": "nodemon backend/server.js",
+    "dev": "concurrently \"nodemon backend/server.js\" \"set PORT=3001 && react-scripts start\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

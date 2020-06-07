@@ -7,12 +7,14 @@ const Footer = () => {
       <div className="shopContact">
         <i className="fa fa-map-marker" style={{ width: "30px" }}></i>
         78,HillStreet, Kalutara
-        <button>
+        <button style={{ fontWeight: "bold" }}>
           <a
+            style={{ textDecorationLine: "none", color: "black" }}
             href="https://www.google.com/maps/dir//New+Lanka+Hardware+Stores,+No.28+Good+Shed+Rd,+Kalutara/@6.5747411,79.9923292,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3ae23721c7eac689:0x3b828d47f402bbdc!2m2!1d79.9604536!2d6.5824969"
             target="_blank"
-          ></a>
-          GET DIRRECTIONS
+          >
+            GET DIRRECTIONS
+          </a>
         </button>
         <br />
         <i className="fa fa-phone" style={{ width: "30px" }}></i> Phone:

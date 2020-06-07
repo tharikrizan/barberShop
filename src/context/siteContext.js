@@ -7,6 +7,7 @@ export const siteContext = createContext();
 
 const SiteContextProvider = (props) => {
   const [booking, setBooking] = useState([]);
+  const [arrivedBooking, setArrivedBooking] = useState([]);
   const [service, setService] = useState([]);
   const [alertMessage, setAlertMessage] = useState(null);
   const [bookedTimeSlots, setBookedTimeSlots] = useState([]);
@@ -23,7 +24,7 @@ const SiteContextProvider = (props) => {
   const editService = () => {
     console.log("edit service");
   };
-  const addBooking = async (newBooking) => {
+  const addBooking = (newBooking) => {
     const { name, phone, address, nic, date, service } = newBooking;
 
     let bookedTime = [
@@ -106,7 +107,6 @@ const SiteContextProvider = (props) => {
         { _id: uuid(), ...newBooking, bookedTime, currentTime: new Date() },
       ]);
     }
-    /*  console.log(bookedTimeSlots); */
   };
 
   const removeBooking = (id) => {
@@ -117,7 +117,7 @@ const SiteContextProvider = (props) => {
     console.log(slotToBeRemoved.bookedTime);
     //chcking whether the booked slot is available
     if (slotToBeRemoved) {
-      console.log("before removing:", bookedTimeSlots);
+      //unallocating the booked time slot
       setBookedTimeSlots(
         bookedTimeSlots.filter(
           (x) => slotToBeRemoved.bookedTime.indexOf(x) == -1
@@ -127,6 +127,30 @@ const SiteContextProvider = (props) => {
       setBooking(booking.filter((slot) => slot._id !== id));
     }
   };
+  const customerArrived = (id) => {
+    let arrayArrivedBooking = booking.filter((slot) => slot._id === id);
+
+    let newArrivedBooking = arrayArrivedBooking[0];
+
+    console.log("arrivedBooking:", newArrivedBooking);
+
+    //chcking whether the booked slot is available
+    if (newArrivedBooking) {
+      setArrivedBooking([...arrivedBooking, newArrivedBooking]);
+      setBooking(booking.filter((slot) => slot._id !== id));
+    }
+  };
+
+  const removeHistory = (id) => {
+    let arraySlotToBeRemoved = arrivedBooking.filter((slot) => slot._id === id);
+
+    let slotToBeRemoved = arraySlotToBeRemoved[0];
+
+    //chcking whether the booked slot is available
+    if (slotToBeRemoved) {
+      setArrivedBooking(arrivedBooking.filter((slot) => slot._id !== id));
+    }
+  };
 
   return (
     <siteContext.Provider
@@ -134,6 +158,7 @@ const SiteContextProvider = (props) => {
         booking,
         bookedTimeSlots,
         service,
+        arrivedBooking,
 
         setBooking,
         addBooking,
@@ -141,6 +166,8 @@ const SiteContextProvider = (props) => {
         addService,
         removeService,
         editService,
+        customerArrived,
+        removeHistory,
       }}
     >
       {props.children}

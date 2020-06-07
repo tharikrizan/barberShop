@@ -18,15 +18,15 @@ const AdminPage = () => {
           </h1>
           <BookedSlotsCardsAdmin />
         </section>
-        <section className="serviceTableAdmin">
+        {/*   <section className="serviceTableAdmin">
           <ServiceTableAdmin />
-        </section>
+        </section> */}
 
         <section className="appointmentForm">
           <AppointmentForm />
         </section>
         <section className="bookingHistory">
-        <h1 style={{ textAlign: "center" }}>
+          <h1 style={{ textAlign: "center" }}>
             <Badge variant="success">BOOKING HISTORY</Badge>
           </h1>
           <BookingHistoryTable />

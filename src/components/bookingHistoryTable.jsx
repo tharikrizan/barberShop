@@ -1,40 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Table from "react-bootstrap/Table";
+import { siteContext } from "../context/siteContext";
+import BookingHistory from "./bookingHistory";
 const BookingHistoryTable = () => {
+  const { arrivedBooking } = useContext(siteContext);
+
+  const arrivedBookingComponents = arrivedBooking.map((x) => (
+    <BookingHistory key={x._id} arrivedBookingDetails={x} />
+  ));
   return (
     <Table responsive striped bordered hover variant="dark">
       <thead>
         <tr>
-          <th>Date and Time</th>
+          <th>Date</th>
+          <th>Time</th>
           <th>Name</th>
           <th>Address</th>
           <th>NIC</th>
           <th>Phone</th>
+          <th>Service</th>
+          <th>Remove</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Larry the Bird</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
+      <tbody>{arrivedBookingComponents}</tbody>
     </Table>
   );
 };

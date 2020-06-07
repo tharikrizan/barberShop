@@ -1,22 +1,53 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Card from "react-bootstrap/Card";
 import "./style/bookedSlotCard.css";
+import { siteContext } from "../context/siteContext";
 
-const BookedSlotAdmin = (props) => {
+const BookedSlotAdmin = ({ bookingDetails }) => {
+  const { removeBooking,customerArrived } = useContext(siteContext);
+
+  console.log(
+    "time difference,",
+    new Date().getTime() - bookingDetails.currentTime.getTime()
+  );
+  const confirmBooking = () => {
+    if (new Date().getTime() - bookingDetails.currentTime.getTime() < 1000) {
+    }
+  };
+
+  let sTime = bookingDetails.bookedTime[0];
+  let eTime = bookingDetails.bookedTime[bookingDetails.bookedTime.length - 1];
+  let endTime = new Date(eTime.getTime() + 1000 * 60 * 15);
+
+  console.log(sTime.getHours(), sTime.getMinutes());
+  console.log(eTime.getHours(), eTime.getMinutes());
+  console.log("endTime:", endTime.getHours(), endTime.getMinutes());
   return (
     <div className="cardContainer">
       <Card>
         <Card.Body>
-          <Card.Title>Card Title</Card.Title>
+          <Card.Title>Booking</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
-            Card Subtitle
+            Name : {bookingDetails.name}
           </Card.Subtitle>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Card.Link href="#">Card Link</Card.Link>
-          <Card.Link href="#">Another Link</Card.Link>
+          <Card.Subtitle className="mb-2 text-muted">
+            Start Time : {sTime.getHours()} : {sTime.getMinutes()}
+          </Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted">
+            End Time : {endTime.getHours()} : {endTime.getMinutes()}
+          </Card.Subtitle>
+
+          <Card.Subtitle>
+            <button onClick={() => removeBooking(bookingDetails._id)}>
+              Remove
+            </button>
+          </Card.Subtitle>
+
+          <Card.Subtitle>
+            <button onClick={() => customerArrived(bookingDetails._id)}>
+              Arrived
+            </button>
+          </Card.Subtitle>
         </Card.Body>
       </Card>
     </div>
